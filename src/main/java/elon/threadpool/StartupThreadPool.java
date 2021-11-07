@@ -11,7 +11,7 @@ import elon.threadpool.util.ElonThreadPoolUtils;
  */
 public class StartupThreadPool {
     public static void main(String[] args) {
-        ElonThreadPoolUtils.initThreadPool();
+        ElonThreadPoolUtils.initThreadPool(10, 100);
         for (int i = 1; i <= 1000; ++i) {
             ElonThreadPoolUtils.executeTask(new ThreadTask(String.valueOf(i)));
         }
