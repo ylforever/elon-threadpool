@@ -23,7 +23,7 @@ public class ElonThreadPoolUtils {
 
     private static ThreadPoolExecutor poolExecutor = null;
 
-    private static ThreadTaskLinkedBlockingQueue<Runnable> queue = new ThreadTaskLinkedBlockingQueue<>();
+    private static ThreadTaskLinkedBlockingDeque<Runnable> queue = new ThreadTaskLinkedBlockingDeque<>();
 
     public static void initThreadPool(int corePoolSize, int maximumPoolSize){
         ElonThreadPoolUtils.corePoolSize = corePoolSize;
@@ -52,7 +52,7 @@ public class ElonThreadPoolUtils {
      * @since 2021/11/6
      */
     @Setter
-    private static class ThreadTaskLinkedBlockingQueue<E> extends LinkedBlockingDeque<E> {
+    private static class ThreadTaskLinkedBlockingDeque<E> extends LinkedBlockingDeque<E> {
         @Override
         public boolean offer(E e) {
             int activeThreadNum = poolExecutor.getActiveCount();
